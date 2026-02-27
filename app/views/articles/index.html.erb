@@ -8,8 +8,11 @@
 <% end %>
 
 <div class="d-flex flex-wrap gap-4">
-  <% @articles.each do |article| %>
+  <% @articles.each_with_index do |article, index| %>
     <%= render article %>
+    <% if (index + 1) % 5 == 0 %>
+      <%= render "ad" %>
+    <% end %>
   <% end %>
 
   <%= link_to new_article_path, class: "card text-decoration-none border-dashed new-article-card" do %>
