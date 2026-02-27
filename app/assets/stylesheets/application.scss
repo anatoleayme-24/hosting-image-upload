@@ -1,1 +1,20 @@
 @import "bootstrap";
+
+.new-article-card {
+  border: 2px dashed #dee2e6 !important;
+  transition: border-color 0.2s, background-color 0.2s;
+
+  &:hover {
+    border-color: #6c757d !important;
+    background-color: #f8f9fa;
+  }
+}
+
+.card {
+  transition: transform 0.15s, box-shadow 0.15s;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+  }
+}

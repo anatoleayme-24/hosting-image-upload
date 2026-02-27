@@ -1,12 +1,30 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, @article.title %>
 
-<%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill if @article.photo.attached? %>
+<% if notice.present? %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+<% end %>
 
-<%= render @article %>
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card shadow-sm">
+      <% if @article.photo.attached? %>
+        <%= cl_image_tag @article.photo.key, width: 800, height: 400, crop: :fill, class: "card-img-top" %>
+      <% end %>
 
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", root_path %>
+      <div class="card-body">
+        <h1 class="card-title h3"><%= @article.title %></h1>
+        <p class="card-text text-muted"><%= @article.body %></p>
+      </div>
 
-  <%= button_to "Destroy this article", @article, method: :delete %>
+      <div class="card-footer d-flex gap-2">
+        <%= link_to "Modifier", edit_article_path(@article), class: "btn btn-outline-secondary btn-sm" %>
+        <%= link_to "Retour", root_path, class: "btn btn-outline-secondary btn-sm" %>
+        <%= button_to "Supprimer", @article, method: :delete, class: "btn btn-danger btn-sm ms-auto",
+            form: { data: { turbo_confirm: "Supprimer cet article ?" } } %>
+      </div>
+    </div>
+  </div>
 </div>

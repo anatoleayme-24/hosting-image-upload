@@ -1,12 +1,15 @@
-<div id="<%= dom_id article %>">
-  <div>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </div>
+<div class="card shadow-sm" style="width: 280px;">
+  <% if article.photo.attached? %>
+    <%= cl_image_tag article.photo.key, width: 280, height: 180, crop: :fill, class: "card-img-top" %>
+  <% else %>
+    <div class="bg-light d-flex align-items-center justify-content-center text-muted" style="height: 180px;">
+      <span>Pas d'image</span>
+    </div>
+  <% end %>
 
-  <div>
-    <strong>Body:</strong>
-    <%= article.body %>
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title text-truncate"><%= article.title %></h5>
+    <p class="card-text text-muted small flex-grow-1"><%= truncate(article.body, length: 90) %></p>
+    <%= link_to "Voir l'article", article, class: "btn btn-outline-dark btn-sm mt-2 align-self-start" %>
   </div>
-
 </div>
