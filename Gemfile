@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.1.2"
+gem "rails", "~> 8.1.3"
 gem "sprockets-rails"
 gem "bootstrap", "~> 5.3"
 gem "simple_form"
